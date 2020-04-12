@@ -29,7 +29,8 @@ var campgroundRoutes = require("./routes/campgrounds"),
 // Online MongoDB Atlas 
 mongoose.connect("mongodb+srv://mnqobi:yelpCamp!@#$%^@cluster0-pgb8i.mongodb.net/test?retryWrites=true&w=majority", {
 	useNewUrlParser: true, 
-	useUnifiedTopology: true, 
+	useUnifiedTopology: true,
+	useFindAndModify: false, 
 	useCreateIndex: true}).then(() => {
 		console.log("Connected to DB!");
 	}).catch(err => {
@@ -69,7 +70,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 // PORT QUERY 
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 3000;
 app.listen(port, function(){
 	console.log("The YelpCamp Server Has Started!");
 });
