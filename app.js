@@ -71,6 +71,8 @@ app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 require("dotenv").config();
 
+console.log(ADMINCODE);
+
 // PORT QUERY 
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
