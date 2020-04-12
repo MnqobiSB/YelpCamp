@@ -17,25 +17,27 @@ var campgroundRoutes = require("./routes/campgrounds"),
 	reviewRoutes     = require("./routes/reviews"),
 	indexRoutes 	 = require("./routes/index")
 
+
 // Local MongoDB
-// mongoose.connect("mongodb://localhost:27017/yelp_camp", {
-// 	useNewUrlParser: true, 
-// 	useUnifiedTopology: true, 
-// 	useCreateIndex: true}).then(() => {
-// 		console.log("Connected to DB!");
-// 	}).catch(err => {
-// 		console.log("ERROR:", err.message);
-// 	});
-// Online MongoDB Atlas 
-mongoose.connect("mongodb+srv://mnqobi:EgE0o7C6WIWcTV7i@cluster0-pgb8i.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect(process.env.DATABASEURL, {
 	useNewUrlParser: true, 
-	useUnifiedTopology: true,
-	useFindAndModify: false, 
+	useUnifiedTopology: true, 
 	useCreateIndex: true}).then(() => {
 		console.log("Connected to DB!");
 	}).catch(err => {
 		console.log("ERROR:", err.message);
 	});
+// Online MongoDB Atlas 
+// mongoose.connect("mongodb+srv://mnqobi:EgE0o7C6WIWcTV7i@cluster0-pgb8i.mongodb.net/test?retryWrites=true&w=majority", {
+// 	useNewUrlParser: true, 
+// 	useUnifiedTopology: true,
+// 	useFindAndModify: false, 
+// 	useCreateIndex: true}).then(() => {
+// 		console.log("Connected to DB!");
+// 	}).catch(err => {
+// 		console.log("ERROR:", err.message);
+// 	});
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -68,8 +70,6 @@ app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
-
-require("dotenv").config();
 
 // PORT QUERY 
 var port = process.env.PORT || 3000;
