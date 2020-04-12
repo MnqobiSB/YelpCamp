@@ -69,6 +69,8 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
+require("dotenv").config();
+
 // PORT QUERY 
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
