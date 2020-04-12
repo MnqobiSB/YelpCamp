@@ -27,7 +27,7 @@ var campgroundRoutes = require("./routes/campgrounds"),
 // 		console.log("ERROR:", err.message);
 // 	});
 // Online MongoDB Atlas 
-mongoose.connect("mongodb+srv://mnqobi:yelpCamp!@#$%^@cluster0-pgb8i.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://mnqobi:EgE0o7C6WIWcTV7i@cluster0-pgb8i.mongodb.net/test?retryWrites=true&w=majority", {
 	useNewUrlParser: true, 
 	useUnifiedTopology: true,
 	useFindAndModify: false, 
